@@ -2230,6 +2230,7 @@ function createIframe(parent, url) {
     nEl.style.position = 'absolute';
     nEl.style.left = '0';
     nEl.style.top = '0';
+    // nEl.style.border = "0px none";
     parent.innerHTML = '';
     parent.appendChild(nEl);
     return nEl;
@@ -4761,7 +4762,7 @@ function Linear(linearJTree) {
   if (linearJTree.videoClicks) {
     this.videoClicks = new VideoClicks(linearJTree.videoClicks);
   }
-  
+
   if(linearJTree.adParameters) {
     this.adParameters = xml.keyValue(linearJTree.adParameters);
 
