@@ -302,3 +302,4 @@ vjs.plugin('vastClient', function VASTPlugin(options) {
     return false;
   }
 });
+window["videojs_vast_vpaid"]=!0;
