@@ -2104,9 +2104,11 @@ Subscriber.prototype.trigger = function(eventName, data) {
     var that = this;
     that.get(eventName).forEach(function (subscriber) {
         setTimeout(function () {
-            if (that.get(eventName)) {
-                subscriber.handler.call(subscriber.context, data);
-            }
+            try {
+                if (that.get(eventName)) {
+                    subscriber.handler.call(subscriber.context, data);
+                }
+            } catch(e) { /*fail silently*/ }
         }, 0);
     });
 };
@@ -2230,7 +2232,7 @@ function createIframe(parent, url) {
     nEl.style.position = 'absolute';
     nEl.style.left = '0';
     nEl.style.top = '0';
-    // nEl.style.border = "0px none";
+    nEl.style.border = "0px none";
     parent.innerHTML = '';
     parent.appendChild(nEl);
     return nEl;
