@@ -97,7 +97,7 @@ playerUtils.restorePlayerSnapshot = function restorePlayerSnapshot(player, snaps
    */
   function ensureCanplayEvtGetsFired() {
     var timeoutId = setTimeout(function() {
-      player.trigger('canplay');
+      try { player.trigger('canplay'); } catch(e) { /*fail silently*/ }
     }, 1000);
 
     player.one('canplay', function(){
