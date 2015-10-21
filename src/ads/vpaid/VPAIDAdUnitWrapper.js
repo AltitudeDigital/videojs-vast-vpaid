@@ -106,7 +106,7 @@ VPAIDAdUnitWrapper.prototype.waitForEvent = function (evtName, cb, context) {
   this.on(evtName, responseListener);
 
   timeoutId = setTimeout(function () {
-    cb(new VASTError("on VPAIDAdUnitWrapper.waitForEvent, timeout while waiting for event '" + evtName + "'"));
+    try { cb(new VASTError("on VPAIDAdUnitWrapper.waitForEvent, timeout while waiting for event '" + evtName + "'"));} catch(e){/*fail silently*/}
     timeoutId = null;
     cb = noop;
   }, this.options.responseTimeout);

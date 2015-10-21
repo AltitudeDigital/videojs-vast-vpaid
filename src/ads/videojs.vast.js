@@ -169,7 +169,7 @@ vjs.plugin('vastClient', function VASTPlugin(options) {
       adsCanceled = false;
 
       adCancelTimeoutId = setTimeout(function () {
-        trackAdError(new VASTError('timeout while waiting for the video to start playing', 402));
+        try { trackAdError(new VASTError('timeout while waiting for the video to start playing', 402)); } catch(e) { /*fail silently on error*/ }
       }, settings.adCancelTimeout);
 
       playerUtils.once(player, ['vast.adStart', 'vast.adsCancel'], clearAdCancelTimeout);
